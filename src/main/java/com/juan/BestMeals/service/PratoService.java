@@ -72,6 +72,17 @@ public class PratoService {
         dto.setDescricao(prato.getDescricao());
         dto.setPreco(prato.getPreco());
 
+        // Calcular média
+        if (prato.getAvaliacoes() != null && !prato.getAvaliacoes().isEmpty()) {
+            double media = prato.getAvaliacoes().stream()
+                    .mapToInt(a -> a.getNota())
+                    .average()
+                    .orElse(0.0);
+            dto.setMediaAvaliacao(media);
+        } else {
+            dto.setMediaAvaliacao(0.0);
+        }
+
         RestauranteDTO restauranteDTO = new RestauranteDTO();
         restauranteDTO.setId(prato.getRestaurante().getId());
         restauranteDTO.setNome(prato.getRestaurante().getNome());

@@ -8,6 +8,7 @@ public class PratoDTO {
     private String descricao;
     private BigDecimal preco;
     private RestauranteDTO restaurante;
+    private Double mediaAvaliacao;
 
 
     public Long getId() {
@@ -49,4 +50,13 @@ public class PratoDTO {
     public void setRestaurante(RestauranteDTO restaurante) {
         this.restaurante = restaurante;
     }
+
+    public Double getMediaAvaliacao() {
+        return mediaAvaliacao;
+    }
+
+    public void setMediaAvaliacao(Double mediaAvaliacao) {
+        this.mediaAvaliacao = mediaAvaliacao;
+    }
+
 }

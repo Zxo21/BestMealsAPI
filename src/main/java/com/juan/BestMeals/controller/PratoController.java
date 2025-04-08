@@ -43,8 +43,4 @@ public class PratoController {
         pratoService.deletar(id);
     }
 
-    @GetMapping("/top")
-    public List<PratoDTO> listarTop10() {
-        return pratoService.listarTopPratos();
-    }
 }

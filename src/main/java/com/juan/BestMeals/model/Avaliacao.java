@@ -2,7 +2,7 @@ package com.juan.BestMeals.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 public class Avaliacao {
@@ -11,6 +11,7 @@ public class Avaliacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private LocalDate data;
     private int nota;
     private String comentario;
 
@@ -18,7 +19,39 @@ public class Avaliacao {
     @JoinColumn(name = "prato_id")
     private Prato prato;
 
-    private LocalDateTime data = LocalDateTime.now();
+    // Getters e Setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
+
+    public int getNota() {
+        return nota;
+    }
+
+    public void setNota(int nota) {
+        this.nota = nota;
+    }
+
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
 
     public Prato getPrato() {
         return prato;
@@ -27,9 +60,4 @@ public class Avaliacao {
     public void setPrato(Prato prato) {
         this.prato = prato;
     }
-
-    public void setData(LocalDateTime data){
-        this.data = data;
-    }
 }
-
