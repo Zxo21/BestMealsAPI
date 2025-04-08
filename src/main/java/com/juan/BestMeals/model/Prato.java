@@ -6,9 +6,13 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * Entidade que representa um Prato no sistema.
+ */
 @Entity
 public class Prato {
 
+    // Identificador único do prato, gerado automaticamente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,11 +21,13 @@ public class Prato {
     private String descricao;
     private BigDecimal preco;
 
+    // Relação muitos-para-um com Restaurante (vários pratos podem pertencer a um único restaurante)
     @ManyToOne
-    @JoinColumn(name = "restaurante_id")
-    @JsonBackReference
+    @JoinColumn(name = "restaurante_id") // Define o nome da coluna que faz o join no banco de dados
+    @JsonBackReference // Usado para evitar loop de serialização com JSON (em conjunto com @JsonManagedReference em Restaurante)
     private Restaurante restaurante;
 
+    // Relação um-para-muitos com Avaliacao (um prato pode ter várias avaliações)
     @OneToMany(mappedBy = "prato", cascade = CascadeType.ALL)
     private List<Avaliacao> avaliacoes;
 
@@ -30,7 +36,6 @@ public class Prato {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -38,7 +43,6 @@ public class Prato {
     public String getNome() {
         return nome;
     }
-
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -46,7 +50,6 @@ public class Prato {
     public String getDescricao() {
         return descricao;
     }
-
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -54,7 +57,6 @@ public class Prato {
     public BigDecimal getPreco() {
         return preco;
     }
-
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
@@ -62,7 +64,6 @@ public class Prato {
     public Restaurante getRestaurante() {
         return restaurante;
     }
-
     public void setRestaurante(Restaurante restaurante) {
         this.restaurante = restaurante;
     }
@@ -70,7 +71,6 @@ public class Prato {
     public List<Avaliacao> getAvaliacoes() {
         return avaliacoes;
     }
-
     public void setAvaliacoes(List<Avaliacao> avaliacoes) {
         this.avaliacoes = avaliacoes;
     }
