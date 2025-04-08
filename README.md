@@ -1,4 +1,4 @@
-# 🍽️ BestMeals
+# 🍽️ BestMealsAPI
 
 BestMeals é uma API REST desenvolvida com **Spring Boot** para gerenciar **restaurantes**, **pratos** e **avaliações de pratos**. Ela permite o cadastro de restaurantes, pratos vinculados e avaliações com nota, comentário e data — ideal para sistemas de recomendação gastronômica.
 
